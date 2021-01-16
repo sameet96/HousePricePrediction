@@ -6,7 +6,7 @@ import seaborn as sns
 #######################################################################################
 # loading data and checking the stats of data
 #######################################################################################
-os.chdir('D:\\ISDS 558\\project')
+os.chdir('D:\\Projects\\HousePricePrediction')
 # loading the dataset in dat variable
 dat = pd.read_csv('kc_house_data.csv')
 dat.head()
