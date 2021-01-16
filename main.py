@@ -23,7 +23,7 @@ plt.title('no. of bedrooms')
 plt.xlabel('bedroom')
 plt.ylabel('Count')
 sns.despine()
-House Price PredictionAppendix 12
+
 plt.show()
 #######################################################################################
 # Visualizing the location of house according to the respective location
@@ -49,7 +49,7 @@ plt.scatter(dat.price, dat.long)
 plt.xlabel('location')
 plt.ylabel('price')
 plt.title('price vs location of the area')
-House Price PredictionAppendix 13
+
 plt.scatter(dat.price, dat.lat)
 plt.xlabel("Price")
 plt.ylabel('Latitude')
@@ -76,7 +76,7 @@ plt.ylabel('price')
 plt.show()
 train1 = dat.drop(['id', 'price'], axis=1)
 train1.head()
-House Price PredictionAppendix 14
+
 # scatter plot for price and floors
 dat.floors.value_counts().plot(kind='bar')
 plt.show()
@@ -101,7 +101,7 @@ plt.show()
 # we can see in the scatter plot that there is one outlier in bedrooms which has 33 bedroom
 #######################################################################################
 ## Checking the boxplot for
-House Price PredictionAppendix 15
+
 # bedrooms
 # bathrooms
 # sqft_living
@@ -129,7 +129,7 @@ dat1 = dat[dat['price'] > 6000000]
 print(dat1)
 dat1 = dat[dat['price'] <= 0]
 print(dat1)
-House Price PredictionAppendix 16
+
 ################################################################################
 ###### checking and removing outliers for bathrooms
 ################################################################################
@@ -159,7 +159,7 @@ print(dat1)
 ################################################################################
 ###### checking and removing outliers for sqft_lot ################
 ################################################################################
-House Price PredictionAppendix 17
+
 plt.boxplot(dat['sqft_lot'])
 plt.title('sqft_lot boxplot')
 plt.show()
@@ -187,7 +187,7 @@ print(dat1)
 plt.boxplot(dat['sqft_basement'])
 plt.title('sqft_basement boxplot')
 plt.show()
-House Price PredictionAppendix 18
+
 dat1 = dat[dat['sqft_basement'] > 4000]
 print(dat1)
 dat = dat.drop([8092], )
@@ -216,7 +216,7 @@ print(corelationPlot)
 #######################################################################################
 dat = dat.drop('sqft_lot15', axis=1)
 corelationPlot = dat.corr()
-House Price PredictionAppendix 19
+
 print(corelationPlot)
 #######################################################################################
 # Multiple Linear regression
@@ -239,7 +239,7 @@ reg.score(x_test, y_test)
 from sklearn import ensemble
 clf = ensemble.GradientBoostingRegressor(n_estimators=400, max_depth=5, min_samples_split=2,
  learning_rate=0.1, loss='ls')
-House Price PredictionAppendix 20
+
 clf.fit(x_train, y_train)
 clf.score(x_test, y_test)
 #######################################################################################
@@ -265,18 +265,18 @@ print('Accuracy:', round(accuracy, 2), '%.')
 #######################################################################################
 # XGrading boosting regression
 #######################################################################################
-House Price PredictionAppendix 21
-# from xgboost import XGBClassifier
-# from sklearn.metrics import accuracy_score
-#
-# model = XGBClassifier()
-# model.fit(x_train, y_train)
-# print(model)
+
+from xgboost import XGBClassifier
+from sklearn.metrics import accuracy_score
+
+model = XGBClassifier()
+model.fit(x_train, y_train)
+print(model)
 # Xgboost took too much time to execute
 # make predictions for test data
-# y_pred = model.predict(x_test)
-# predictions = [round(value) for value in y_pred]
-#
-# # evaluate predictions
-# accuracyXgBoost = accuracy_score(y_test, predictions)
-# print("Accuracy: xgboost %.2f%%" % (accuracyXgBoost * 100.0))
+y_pred = model.predict(x_test)
+predictions = [round(value) for value in y_pred]
+
+# evaluate predictions
+accuracyXgBoost = accuracy_score(y_test, predictions)
+print("Accuracy: xgboost %.2f%%" % (accuracyXgBoost * 100.0))
